@@ -1,0 +1,31 @@
+Package: cod
+Title: CodSpeed Benchmark Harness for R
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Davis", "Vaughan", , "davis@posit.co", role = c("aut", "cre")),
+    person("CodSpeed Technology SAS", role = "cph",
+           comment = "Author of the vendored instrument-hooks library"),
+    person("Posit Software, PBC", role = c("cph", "fnd"))
+  )
+Description: Instruments R expressions with CodSpeed's instrument-hooks C
+    library so that benchmark results are recorded when an R process is run
+    under the CodSpeed runner. Provides a thin binding layer over the
+    instrument-hooks C API and a high-level 'test()' interface for writing
+    benchmarks.
+License: MIT + file LICENSE
+URL: https://github.com/r-lib/cod
+BugReports: https://github.com/r-lib/cod/issues
+Depends:
+    R (>= 4.0.0)
+Imports:
+    jsonlite,
+    rlang (>= 1.1.0),
+    stats,
+    utils
+Suggests:
+    testthat (>= 3.0.0)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Config/build/compilation-database: true
+Config/testthat/edition: 3

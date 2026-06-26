@@ -1,0 +1,7 @@
+^plan\.md$
+^LICENSE\.md$
+^\.Rproj\.user$
+^.*\.Rproj$
+^\.air\.toml$
+^\.cache$
+^compile_commands\.json$

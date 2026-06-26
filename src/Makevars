@@ -1,0 +1,2 @@
+PKG_CPPFLAGS = -I./rlang -I./vendor/instrument-hooks/includes
+PKG_CFLAGS = $(C_VISIBILITY)
