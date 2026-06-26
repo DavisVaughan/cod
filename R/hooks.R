@@ -3,8 +3,7 @@
 cod_hooks <- function() {
   if (is.null(the$hooks)) {
     the$hooks <- .Call(ffi_hooks_init)
-    version <- as.character(utils::packageVersion("cod"))
-    .Call(ffi_set_integration, the$hooks, "cod", version)
+    .Call(ffi_set_integration, the$hooks, "cod", "0.0.1")
   }
   the$hooks
 }
