@@ -188,19 +188,20 @@ r_obj* ffi_write_environment(r_obj* ptr, r_obj* pid) {
 // The instrumented measurement window.
 // ---------------------------------------------------------------------------
 
+// The benchmarked expression runs inside a function whose name begins with
+// `__codspeed_root_frame__`, never inlined, so CodSpeed can anchor the
+// execution profile at a clean root. The symbol must also be visible in the
+// symbol table (not hidden by `-fvisibility=hidden`) so the profiler can find
+// it, hence the explicit default visibility.
 #if defined(_MSC_VER)
-#define COD_NOINLINE __declspec(noinline)
+#define COD_ROOT_FRAME __declspec(noinline)
+#elif defined(__GNUC__)
+#define COD_ROOT_FRAME __attribute__((noinline, visibility("default")))
 #else
-#define COD_NOINLINE __attribute__((noinline))
+#define COD_ROOT_FRAME
 #endif
 
-// The benchmarked expression must run inside a function whose name begins with
-// `__codspeed_root_frame__` and which is never inlined, so that flamegraphs
-// have a clean root.
-static COD_NOINLINE r_obj* __codspeed_root_frame__cod_eval(
-    r_obj* expr,
-    r_obj* env
-) {
+COD_ROOT_FRAME r_obj* __codspeed_root_frame__cod_eval(r_obj* expr, r_obj* env) {
     return r_eval(expr, env);
 }
 
