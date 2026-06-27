@@ -31,6 +31,9 @@ extern r_obj* ffi_set_environment(r_obj*, r_obj*, r_obj*, r_obj*);
 extern r_obj* ffi_set_environment_list(r_obj*, r_obj*, r_obj*, r_obj*);
 extern r_obj* ffi_write_environment(r_obj*, r_obj*);
 
+// Demo
+extern r_obj* ffi_demo_fib(r_obj*);
+
 // Measurement
 extern r_obj* ffi_instrument(r_obj*, r_obj*, r_obj*, r_obj*);
 extern r_obj* ffi_walltime_run(
@@ -72,6 +75,8 @@ static const R_CallMethodDef call_entries[] = {
     {"ffi_set_environment", (DL_FUNC) &ffi_set_environment, 4},
     {"ffi_set_environment_list", (DL_FUNC) &ffi_set_environment_list, 4},
     {"ffi_write_environment", (DL_FUNC) &ffi_write_environment, 2},
+
+    {"ffi_demo_fib", (DL_FUNC) &ffi_demo_fib, 1},
 
     {"ffi_instrument", (DL_FUNC) &ffi_instrument, 4},
     {"ffi_walltime_run", (DL_FUNC) &ffi_walltime_run, 7},
