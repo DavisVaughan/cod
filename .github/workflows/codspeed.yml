@@ -29,6 +29,8 @@ jobs:
 
       - name: Run benchmarks
         uses: CodSpeedHQ/action@v4
+        env:
+          CODSPEED_LOG: trace
         with:
           mode: simulation
           run: Rscript -e 'cod::test_file("tests/bench/c.R")'
